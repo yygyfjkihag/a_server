@@ -13,9 +13,7 @@ int main(){
 	svr.initListen(8700);
 	while(true){
 		if(svr.isReady()){
-			while(true){
-				svr.exch_Msg();
-			}
+			while(1==svr.exch_Msg());
 		}
 		else{
 			cout<<"accept error: "<<WSAGetLastError()<<endl;

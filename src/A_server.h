@@ -27,7 +27,7 @@ public:
 	int init();
 	int initListen(const unsigned short serverPort);
 	bool isReady();
-	void exch_Msg();
+	int exch_Msg();
 	void close();
 	virtual ~A_server(){};
 };

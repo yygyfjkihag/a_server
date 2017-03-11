@@ -78,13 +78,14 @@ bool A_server::isReady() {
 		return 0;
 }
 
-void A_server::exch_Msg() {
+int A_server::exch_Msg() {
 	int err;
 
 	err = recv(sock_con, recv_buf, sizeof(recv_buf), 0);
 
 	if (err <= 0) {
 		cout << "Server-recv error: " << WSAGetLastError() << endl;
+		return -1;
 	}
 
 	sprintf(send_buf, "Server receive msg: %s", recv_buf);
@@ -93,7 +94,9 @@ void A_server::exch_Msg() {
 
 	if ( SOCKET_ERROR == err) {
 		cout << "Server-send error: " << WSAGetLastError() << endl;
+		return -2;
 	}
+	return 1;
 }
 
 void A_server::close() {
