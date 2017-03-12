@@ -20,16 +20,16 @@ private:
 	char send_buf[512];
 	SOCKET sock;
 	SOCKET sock_con;
-	SOCKADDR_IN addr_client;
 
 public:
 	A_server();
-	int init();
-	int initListen(const unsigned short serverPort);
+	bool socketBoost();
+	bool initListen(const unsigned short serverPort);
+	bool initListen(const char* serverIp,const unsigned short serverPort);
 	bool isReady();
-	int exch_Msg();
+	bool exchange_Msg();
 	void close();
-	virtual ~A_server(){};
+	~A_server(){};
 };
 
 #endif /* A_SERVER_H_ */
